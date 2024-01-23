@@ -1,0 +1,76 @@
+{% extends "base.html" %} {% block content %}
+
+
+
+<h2></h2>
+
+<div>
+    <form id="upload-file"  action="/predict" method="POST" enctype="multipart/form-data">
+      <center> {% for message in get_flashed_messages() %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        {% endfor %}
+      </center>
+
+      <!--data memet-->
+      <h1 class="pt-5 pb-2">List of Cust</h1>
+
+      <!--<p class="lead alert alert-warning">This is a list of all the Cust of the<strong></strong> style in our inventory.</p>-->
+
+      <p class="ml-4"><a href="{{ url_for('index') }}">Return to the index.</a></p>
+
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Usia</th>
+          <th>Income</th>
+          <th>Jenis Kelamin</th>
+          <th>Premi</th>
+          <th>Batasan Maks Klaim</th>
+          <th>Masa Tunggu Klaim</th>
+          <th>Cakupan Perlindungan</th>
+          <th>Nama Produk</th>
+        </tr>
+
+        <!-- here is a for-loop to give us all the socks -->
+        {% for cust in cust %}
+        <tr>
+          <td>{{ cust.nama }}</td>
+          <td>{{ cust.usia }}</td>
+          <td>{{ cust.incomekecil }}-{{ cust.incomebesar }}</td>
+          <td>{{ cust.sex }}</td>
+          <td>{{ cust.premi }}</td>
+          <td>{{ cust.bklaim }}</td>
+          <td>{{ cust.tklaim }}</td>
+          <td>{{ cust.cakupan }}</td>
+          <td>{{ cust.produk }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+
+                
+
+       
+        
+          
+    </form>
+
+    
+        
+  
+   
+
+    <div class="loader" style="display:none;"></div>
+
+    <h3 id="result">
+        <span> </span>
+    </h3>
+
+</div>
+
+{% endblock %}

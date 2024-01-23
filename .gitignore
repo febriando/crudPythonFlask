@@ -1,0 +1,7 @@
+templates/home.html
+templates/homev2.html
+templates/predict.html
+
+upload/*
+
+Untitled3.ipynb
